@@ -1,23 +1,30 @@
 package com.company;
 
-import com.company.task2.Ball;
-import com.company.task2.Basket;
-import com.company.task2.Colors;
-import com.company.task2.ServiceBall;
+import com.company.task2.entity.Ball;
+import com.company.task2.entity.Color;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
-        List<Ball> listOfBalls = new ArrayList<>();
-        Random random = new Random();
-        for (int i = 0; i < 10; i++) {
-            listOfBalls.add(new Ball(random.nextInt(5) + 15, Colors.getRandomColor()));
+        List<Ball> list = new ArrayList<>();
+        //Using try with resources for auto closing the source of data
+        try (BufferedReader in = new BufferedReader(new FileReader("C:\\Users\\super\\Desktop\\GELO\\Computer Science\\text.txt"))) {
+            String line;
+            while ((line = in.readLine()) != null) {
+                String[] split = line.split(", ");
+                if (Color.checkColorCorrectness(split[0]) && Integer.parseInt(split[1]) > 0) {
+                    Color color = Color.valueOf(split[0].toUpperCase());
+                    int weight = Integer.parseInt(split[1]);
+                    list.add(new Ball(weight, color));
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        Basket basket = new Basket(listOfBalls);
-
-        System.out.println(ServiceBall.getQuantityOfColoredBalls(Colors.GREEN, basket));
+        System.out.print(list);
     }
 }
