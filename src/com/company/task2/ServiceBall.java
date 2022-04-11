@@ -1,7 +1,11 @@
 package com.company.task2;
 
-public class ServiceBall {
-    public static int getBasketWeight(Basket basket) {
+import com.company.task2.entity.Basket;
+import com.company.task2.entity.Color;
+import com.company.task2.entity.Service;
+
+public class ServiceBall implements Service {
+    public int calculateBasketWeight(Basket basket) {
         int length = basket.getBasket().size();
         int weight = 0;
         for (int i = 0; i < length; i++) {
@@ -10,7 +14,7 @@ public class ServiceBall {
         return weight;
     }
 
-    public static int getQuantityOfColoredBalls(Colors color, Basket basket) {
+    public int calculateQuantityOfColoredBalls(Color color, Basket basket) {
         int quantity = 0;
         int length = basket.getBasket().size();
         for (int i = 0; i < length; i++) {
