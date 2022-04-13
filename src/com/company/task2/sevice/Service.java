@@ -1,4 +1,7 @@
-package com.company.task2.entity;
+package com.company.task2.sevice;
+
+import com.company.task2.entity.Basket;
+import com.company.task2.entity.Color;
 
 public interface Service {
     int calculateBasketWeight(Basket basket);
