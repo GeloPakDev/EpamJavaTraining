@@ -2,7 +2,7 @@ package test;
 
 import com.company.task2.entity.Basket;
 import com.company.task2.entity.Color;
-import com.company.task2.sevice.ServiceBall;
+import com.company.task2.service.ServiceBall;
 import com.company.task2.util.DataReader;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
